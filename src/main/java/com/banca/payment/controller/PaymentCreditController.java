@@ -25,27 +25,28 @@ public class PaymentCreditController {
         return paymentCreditService.findAll();
     }
 
-    @ApiOperation(value = "Create payment credit", response = String.class)
+    @ApiOperation(value = "Get a specific payment credit", response = String.class)
     @GetMapping("/getPaymentCredit/{id}")
     public Mono<PaymentCredit> getPaymentCredit(@PathVariable("id") String id) {
         log.info("Get a specific PaymentCredit");
         return paymentCreditService.findById(id);
     }
 
-    @ApiOperation(value = "Update payment credit", response = String.class)
+    @ApiOperation(value = "Create payment credit", response = String.class)
     @PostMapping("/addPaymentCredit")
     public void createPaymentCredit(@RequestBody PaymentCredit PaymentCredit) {
         log.info("Create PaymentCredit");
         paymentCreditService.save(PaymentCredit).subscribe();
     }
 
-    @ApiOperation(value = "Delete a specific payment credit", response = String.class)
+    @ApiOperation(value = "Update payment credit", response = String.class)
     @PutMapping("/updatePaymentCredit")
     public Mono<PaymentCredit> updatePaymentCredit(@RequestBody PaymentCredit PaymentCredit) {
         log.info("Update PaymentCredit");
         return paymentCreditService.update(PaymentCredit);
     }
 
+    @ApiOperation(value = "Delete a specific payment credit", response = String.class)
     @DeleteMapping("/deletePaymentCredit/{id}")
     public Mono<Void> deletePaymentCredit(@PathVariable("id") String id) {
         log.info("Delete a specific PaymentCredit");
